@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Personal Center</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--<link href="css/PersonalCenter/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/PersonalCenter/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <!--图片选择-->
+    <link type="text/css" href="css/PersonalCenter/fileinput.css" rel="stylesheet"/>
+
+
+    <!--     <link href="bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">    Custom styles for this template -->
+    <link href="css/PersonalCenter/navbar-fixed-top.css" rel="stylesheet">
+
+    <!--
+          <script type="text/javascript" src="bootstrap-datetimepicker.js" charset="UTF-8"></script>
+          <script type="text/javascript" src="bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    -->
+
+    <script type="text/javascript" src="js/PersonalCenter/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/PersonalCenter/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/PersonalCenter/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/PersonalCenter/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+
+    <!--	  fileinput-->
+    <script type="text/javascript" src="js/PersonalCenter/fileinput.js"></script>
+    <script type="text/javascript" src="js/PersonalCenter/zh.js"></script>
+
+    <!--Ajax前后交互-->
+    <script type="text/javascript" th:src="@{/myjs/PersonalCenter.js}"></script>
+
+    <!--	  <script type="text/javascript" src="jQuery.js"></script>-->
+
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Visual</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">个人中心</a></li>
+                <li><a href="#contact">开锁历史</a></li>
+
+            </ul>
+
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+
+
+        <div class="row">
+            <div><label>个人信息：</label></div>
+            <div class="col-md-6">左边内容
+                <!--<p th:text="${#httpServletRequest.getSession().getAttributeNames()}"></p>-->
+                <!--<p th:text="${#httpServletRequest.getSession().getAttribute('current_user')}"></p>-->
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <label>File input</label>
+                            <!--<input type="file" id="inputImage" name="image" class="projectfile"  />-->
+                            <!--							<input type="file" id="InputFile"> -->
+                            <form id="form" action="upload/UpLoadImage" method="post" enctype="multipart/form-data">
+                                <div class="row form-group">
+                                    <label class="col-md-4">图片上传:</label>
+                                    <div class="col-sm-12">
+                                        <input id="inputImage" name="file" multiple="multiple" type="file"
+                                               data-show-caption="true"/>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>性别:</label>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <span id="gender" class="buttonText">男</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onClick="PersonalCenter.shows($(this).text())">男</a></li>
+                                    <li><a href="#" onClick="PersonalCenter.shows($(this).text())">女</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label>生日：</label>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label for="dtp_input2" class="col-md-3 control-label">选择日期：</label>
+                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy"
+                                 data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input id="birthday" class="form-control" size="16" type="text" value="" readonly>
+                                <!--<input id="birthday" class="form-control" size="16" type="text" value="">-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_input2" value=""/><br/>
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <!--<input id="saveInfo" class="btn btn-default" type="button" value="保存">-->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#InfoSaveModal">
+                    保存
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="InfoSaveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">确认保存</h4>
+                            </div>
+                            <div class="modal-body">
+                                是否确认保存？
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" id="saveInfo" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6"><label>修改密码：</label>
+                <form>
+                    <div class="form-group">
+                        <label for="oldPassword">原先密码：</label>
+                        <input type="password" class="form-control" id="oldPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">新密码：</label>
+                        <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="conformPassword">确认密码：</label>
+                        <input type="password" class="form-control" id="conformPassword" placeholder="Password">
+                    </div>
+
+                    <!--<input id="savePassword" class="btn btn-default" type="button" value="保存">-->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#PasswordSaveModal">
+                        保存
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="PasswordSaveModal" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">确认保存</h4>
+                                </div>
+                                <div class="modal-body">
+                                    是否确认保存？
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" id="savePassword" class="btn btn-primary">Save changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div> <!-- /container -->
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+//        language:  'fr',
+        format: 'yyyy-mm-dd',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+//        language:  'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+</script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var user = /*[[${#httpServletRequest.getSession().getAttribute('current_user')}]]*/
+    // console.log(user);
+    var contextPath = /*[[${#httpServletRequest.getContextPath()}]]*/;
+    console.log(contextPath);
+
+    $(function () {
+        PersonalCenter.init(contextPath, user);
+        // home.init();
+    });
+    /*]]>*/
+</script>
+</body>
+</html>
+

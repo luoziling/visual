@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js}"></script>
+    <script type="text/javascript"
+            th:src="@{https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js}"></script>
+
+    <!--//AJAX前后交互-->
+    <script type="text/javascript" th:src="@{/myjs/login.js}"></script>
+
+    <link href="/css/signin.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="Username" class="sr-only">Username</label>
+        <input type="text" id="Username" class="form-control" placeholder="username" required autofocus>
+        <label for="Password" class="sr-only">Password</label>
+        <input type="password" id="Password" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="rememberMe" value="remember-me"> Remember me
+            </label>
+        </div>
+        <!--<button class="btn btn-lg btn-primary btn-block" id="loginSubmitButton" type="submit">Sign in</button>-->
+        <button class="btn btn-lg btn-primary btn-block" id="loginSubmitButton" type="button">Sign in</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+</body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var contextPath = /*[[${#httpServletRequest.getContextPath()}]]*/;
+
+    $(function () {
+        login.init(contextPath);
+        // home.init();
+    });
+    /*]]>*/
+</script>
+</html>
