@@ -46,7 +46,8 @@ public class FileUtil {
                         String path = "G:\\java_project_idea\\visual\\Img";
                         System.out.print("文件上传的路径" + path);
                         //组合名称
-                        String fileSrc = path + path_deposit;
+//                        String fileSrc = path + path_deposit;
+                        String fileSrc = path + nowName;
                         //是否随机名称
                         if (isRandomName) {
                             //随机名规则：文件名+_CY+当前日期+8位随机数+文件后缀名
