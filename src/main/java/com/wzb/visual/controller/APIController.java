@@ -73,6 +73,7 @@ public class APIController {
 //        if(recvFile.exists() && recvFile.isFile()){
 //            recvFile.delete();
 //        }
+        //Testd
         try {
             Base64Image.base64ToImage(picData, recvFilePath);
 //            if(recvFile.createNewFile()){
