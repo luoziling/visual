@@ -58,11 +58,11 @@ public class FaceContrast {
 
         System.out.println("result:" + result.toString(2));
 //        System.out.println("score:" + result.getString("score"));
-        JSONObject result1 = result.getJSONObject("result");
-        System.out.println("score:" + result1.getDouble("score"));
+//        JSONObject result1 = result.getJSONObject("result");
+////        System.out.println("score:" + result1.getDouble("score"));
 
-//        return result;
+        return result;
         //result1是result下面的接下去就可以直接获取score
-        return result1;
+//        return result1;
     }
 }
